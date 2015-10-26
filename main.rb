@@ -5,8 +5,7 @@ require 'httparty'
 
 puts "What zipcode would you like to get the weather for?"
 code = gets.chomp.to_i
-puts "What Feature would you like to get for the location?"
-
+puts "What Feature would you like to get for the location"
 
 # feature = {
 #   "astronomy" => "astronomy",
@@ -18,7 +17,7 @@ puts "What Feature would you like to get for the location?"
 
 
 
-open("http://api.wunderground.com/api/4e1235329c36d452/geolookup/forecast10day/q/#{code}.json") do |f|
+open("http://api.wunderground.com/api/4e1235329c36d452/geolookup/forecast10day/conditions/q/IA/#{code}.json") do |f|
   json_string = f.read
   parsed_json = JSON.parse(json_string)
   location = parsed_json['location']['city']
