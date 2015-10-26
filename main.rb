@@ -44,19 +44,4 @@ url = HTTParty.get(result)
 number = url['response']['features']['currenthurricane']
 hurricane = url['currenthurricane'][0]['stormInfo']['stormName']
 category = url['currenthurricane'][0]['Current']['Category']
-puts "Here are THE NUMBERS OF HURRICANES ANYWHERE KURT: #{number}. The name of it is: #{hurricane} and it is a #{category}!"
-
-
-
-
-
-
-# puts "What Feature would you like to get for the location? (Sunrise, Current, Hurricane, or Forecast)"
-# feature = gets.chomp
-#
-# feature = {
-#    "Sunrise" => "astronomy",
-#    "Current" => "conditions",
-#    "Hurricane" => "currenthurricane",
-#    "Forecast" => "forecast10day"
-#  }
+puts "Here are the numbers of active hurricanes currently #{number}. The name of it is: #{hurricane} and it is a #{category}!"
