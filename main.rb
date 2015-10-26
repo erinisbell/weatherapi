@@ -15,11 +15,35 @@ code = gets.chomp.to_i
 # end
 
 
-result = "http://api.wunderground.com/api/4e1235329c36d452/geolookup/conditions/q/#{code}.json"
+# result = "http://api.wunderground.com/api/4e1235329c36d452/geolookup/conditions/q/#{code}.json"
+# url = HTTParty.get(result)
+# current = url['location']['city']
+# temp = url['current_observation']['temp_f']
+# puts "Currently the weather in #{current} is #{temp}"
+
+
+result = "http://api.wunderground.com/api/4e1235329c36d452/astronomy/q/#{code}.json"
 url = HTTParty.get(result)
-current = url['location']['city']
-temp = url['current_observation']['temp_f']
-puts "Currently the weather in #{current} is #{temp}"
+sunrise = url['sun_phase']['sunrise']['hour']
+sunrise2 = url['sun_phase']['sunrise']['minute']
+pmtime = url['sun_phase']['sunset']['hour']
+pmtime2 = url['sun_phase']['sunset']['minute']
+#sunrise.each_key {|key, value| puts "The sunrise is at #{key}#{value}"}
+puts "The sunrise is will be at #{sunrise}:#{sunrise2} a.m. and the sunset will be at #{pmtime}:#{pmtime2} p.m."
+
+
+# result = "http://api.wunderground.com/api/4e1235329c36d452/astronomy/q/#{code}.json"
+# url = HTTParty.get(result)
+# alerts = url['response']['features']['alerts']
+# puts "Here are the current alerts #{alerts} for #{code}"
+
+
+
+
+
+
+
+
 
 # puts "What Feature would you like to get for the location? (Sunrise, Current, Hurricane, or Forecast)"
 # feature = gets.chomp
