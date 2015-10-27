@@ -1,4 +1,5 @@
 require 'HTTParty'
+
 class Client
   KEY = "4e1235329c36d452"
 
@@ -33,19 +34,24 @@ class Client
   end
 
 
-  def hurricane
+  def hurricanes
     result = "http://api.wunderground.com/api/#{KEY}/currenthurricane/view.json"
     url = HTTParty.get(result)
     number = url['response']['features']['currenthurricane']
-    hurricane = url['currenthurricane'][0]['stormInfo']['stormName']
-    category = url['currenthurricane'][0]['Current']['Category']
-   [number, hurricane, category]
+    hurricanes = url['currenthurricane']
+    hurricanes.map do |hurricane|
+      name = hurricane['stormInfo']['stormName']
+      category = hurricane['Current']['Category']
+      [name, category]
+    end
   end
+
+
 
   def tendayforecast
     result = "http://api.wunderground.com/api/#{KEY}/forecast10day/q/#{@code}.json"
     url = HTTParty.get(result)
-    str = ""
+    str = []
     20.times do |i|
       day = url['forecast']['txt_forecast']['forecastday'][i]['title']
       conditions = url['forecast']['txt_forecast']['forecastday'][i]['fcttext']
