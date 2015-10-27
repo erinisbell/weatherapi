@@ -52,10 +52,12 @@ class Client
     result = "http://api.wunderground.com/api/#{KEY}/forecast10day/q/#{@code}.json"
     url = HTTParty.get(result)
     str = []
-    20.times do |i|
+    i = 0
+    until i == 20 do
       day = url['forecast']['txt_forecast']['forecastday'][i]['title']
       conditions = url['forecast']['txt_forecast']['forecastday'][i]['fcttext']
-      str << "Conditions for #{day}: #{conditions}" << "\n"
+      str << [day, conditions]
+      i += 2
     end
     str
   end

@@ -27,4 +27,8 @@ hurricanes.each do |hurricane|
  puts "The name of it is: #{hurricane[0]} and it is a #{hurricane[1]}!"
 end
 
-puts str = client.tendayforecast
+str = client.tendayforecast
+puts = "The Ten day Forecast for your area is:"
+str.each do |day, conditions|
+puts " #{day} : #{conditions}" + "\n"
+end 
