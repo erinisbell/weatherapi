@@ -13,7 +13,7 @@ client = Client.new(code)
 
 
 current, temp = client.conditions
-puts "Currently the weather in #{current} is #{temp}"
+puts "Currently the weather in #{current} is #{temp}°F"
 
 puts "\n"
 sunrise, sunrise2, pmtime, pmtime2 = client.sun
