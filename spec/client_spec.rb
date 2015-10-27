@@ -1,13 +1,13 @@
 require 'spec_helper'
+require './client'
 
-RSpec.describe WeatherPI do
+RSpec.describe "Client" do
 
   describe "#input" do
-    client = Client.new
-    it "takes a user zipcode" do
-      expect(client.code).to be_integer
+    code = 37206
+    client = Client.new(code)
+    it "takes a user code" do
+      expect(code).to be_integer
     end
   end
-end
-
 end
