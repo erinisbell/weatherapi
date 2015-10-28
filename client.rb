@@ -29,7 +29,7 @@ class Client
   def alerts
     result = "http://api.wunderground.com/api/#{KEY}/alerts/q/#{@code}.json"
     url = HTTParty.get(result)
-    alerts2 = url['alerts'][0]['message']
+    alerts2 = url['message']
     [alerts2]
   end
 
